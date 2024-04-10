@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Character } from '../models/character.model'; // Убедитесь, что путь корректный
+import { Character } from '../models/character.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,12 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  getCharacters(page: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}?page=${page}`);
+  getCharacters(page: number = 1, searchQuery?: string): Observable<any> {
+    let queryUrl = `${this.apiUrl}?page=${page}`;
+    if (searchQuery) {
+      queryUrl += `&name=${encodeURIComponent(searchQuery)}`;
+    }
+    return this.http.get(queryUrl);
   }
 
   getCharacter(id: number): Observable<Character> {

@@ -1,4 +1,14 @@
 <div class="container mt-5" class="character-list" infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="150" (scrolled)="onScroll()">
+  <div class="controls">
+    <button (click)="sortByCreatedAt()">Сортировать по дате создания</button>
+    <select [(ngModel)]="filterGender" (change)="filterByGender()">
+      <option value="">Все</option>
+      <option value="Male">Мужской</option>
+      <option value="Female">Женский</option>
+    </select>
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Поиск по имени">
+    <button (click)="searchByName()">Поиск</button>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -13,7 +23,8 @@
         <th scope="row">{{ i + 1 }}</th>
         <td><img [src]="character.image" class="img-thumbnail" width="50" height="50"></td>
         <td>{{ character.name }}</td>
-        <td><img [src]="getGenderIcon(character.gender)" width="24" height="24"></td>
+        <td>{{ character.created | date }}</td>
+        <td><img [src]="getGenderIcon(character.gender)" alt="{{ character.gender }}" width="40" height="40"></td>
       </tr>
     </tbody>
   </table>
