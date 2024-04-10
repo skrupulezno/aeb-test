@@ -2,30 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { AppRoutingModule } from './app-routing.module';
-import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
-import { CharacterDetailComponent } from "./character-detail/character-detail.component";
-
-
-const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'character/:id', component: CharacterDetailComponent }
-];
+import { AppRoutingModule } from './app-routing.module';
+import { CharacterList } from './character-list/character-list.component';
+import { CharacterDetailComponent } from './character-detail/character-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CharacterDetailComponent,
+    CharacterList,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     InfiniteScrollModule,
     AppRoutingModule,
-    [RouterModule.forRoot(routes)],
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [RouterModule]
 })
 export class AppModule { }

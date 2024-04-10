@@ -17,9 +17,13 @@ export class CharacterDetailComponent implements OnInit {
  // constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      const id = params['get']('id');
-      this.characterService.getCharacter(id).subscribe((character: Character | null) => {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      let numericId = 0;
+      if (id !== null) {
+        numericId = Number(id);
+      }
+      this.characterService.getCharacter(numericId).subscribe((character: Character | null) => {
         this.character = character;
       });
     });

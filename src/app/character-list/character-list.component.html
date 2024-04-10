@@ -1,0 +1,20 @@
+<div class="container mt-5" class="character-list" infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="150" (scrolled)="onScroll()">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Avatar</th>
+        <th scope="col">Name</th>
+        <th scope="col">Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let character of characters; let i = index" (click)="goToCharacter(character.id)">
+        <th scope="row">{{ i + 1 }}</th>
+        <td><img [src]="character.image" class="img-thumbnail" width="50" height="50"></td>
+        <td>{{ character.name }}</td>
+        <td><img [src]="getGenderIcon(character.gender)" width="24" height="24"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
