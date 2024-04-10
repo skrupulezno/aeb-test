@@ -1,1 +1,12 @@
-<p>character-detail works!</p>
+<div class="container mt-5">
+  <div class="card" *ngIf="character">
+    <img [src]="character?.image" class="card-img-top" alt="{{ character?.name }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ character?.name }}</h5>
+      <p class="card-text">Gender: {{ character?.gender }}</p>
+      <p class="card-text">Status: {{ character?.status }}</p>
+      <p class="card-text">Species: {{ character?.species }}</p>
+      <p class="card-text">Episodes: {{ character?.episode?.length }}</p>
+    </div>
+  </div>
+</div>

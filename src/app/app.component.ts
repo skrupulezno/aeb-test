@@ -35,9 +35,9 @@ export class AppComponent implements OnInit {
 
   getGenderIcon(gender: string): string {
     switch (gender.toLowerCase()) {
-      case 'male': return 'path/to/male-icon.svg';
-      case 'female': return 'path/to/female-icon.svg';
-      default: return 'path/to/other-icon.svg';
+      case 'male': return '../assets/male.svg';
+      case 'female': return '../assets/female.svg';
+      default: return '../assets/who.svg';
     }
   }
 }

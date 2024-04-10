@@ -8,15 +8,18 @@ import { Character } from '../models/character.model';
   templateUrl: './character-detail.component.html',
   styleUrls: ['./character-detail.component.scss']
 })
+
 export class CharacterDetailComponent implements OnInit {
   character: Character | null = null;
+  // characterService: any;
 
   constructor(private route: ActivatedRoute, private characterService: CharacterService) {}
+ // constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const id = params['id'];
-      this.characterService.getCharacter(id).subscribe(character => {
+      const id = params['get']('id');
+      this.characterService.getCharacter(id).subscribe((character: Character | null) => {
         this.character = character;
       });
     });
