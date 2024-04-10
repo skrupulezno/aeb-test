@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Character } from '../models/character.model';
+
+type Filters = {
+  [key: string]: string | number | undefined;
+};
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +13,19 @@ import { Character } from '../models/character.model';
 export class CharacterService {
   private apiUrl = 'https://rickandmortyapi.com/api/character';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getCharacters(page: number = 1, searchQuery?: string): Observable<any> {
-    let queryUrl = `${this.apiUrl}?page=${page}`;
-    if (searchQuery) {
-      queryUrl += `&name=${encodeURIComponent(searchQuery)}`;
-    }
-    return this.http.get(queryUrl);
+  getCharacters(filters: Filters = {}): Observable<any> {
+    let params = new HttpParams();
+
+    Object.keys(filters).forEach(key => {
+      const value = filters[key];
+      if (value !== undefined) {
+        params = params.set(key, value.toString());
+      }
+    });
+
+    return this.http.get(this.apiUrl, { params });
   }
 
   getCharacter(id: number): Observable<Character> {

@@ -8,29 +8,54 @@ import { Router } from '@angular/router';
   templateUrl: './character-list.component.html',
   styleUrls: ['./character-list.component.scss']
 })
+
 export class CharacterListComponent implements OnInit {
   characters: Character[] = [];
-  page = 1;
+  //clearCharacters: Character[] = [];
   filteredCharacters: Character[] = [];
-  filterGender: string = '';
-  searchQuery: string = '';
+  filters = {
+    name: '',
+    status: '',
+    species: '',
+    type: '',
+    gender: '',
+    page: 1,
+  };
 
   constructor(private characterService: CharacterService, private router: Router) {}
 
   ngOnInit() {
-    this.loadCharacters();
+    this.applyFilters();
   }
 
   onScroll() {
-    this.page++;
-    this.loadCharacters();
+    this.filters.page++;
+    this.applyFilters();
   }
 
-  private loadCharacters() {
-    this.characterService.getCharacters(this.page).subscribe(data => {
+
+  applyFilters() {
+    this.characterService.getCharacters(this.filters).subscribe(data => {
       this.characters = this.characters.concat(data.results);
-      this.filteredCharacters = this.characters;
     });
+  }
+
+  applyFilters2() {
+    this.characters = [];
+    this.applyFilters();
+  }
+
+  clearFilters() {
+    this.characters = [];
+    this.filters = {
+      name: '',
+      status: '',
+      species: '',
+      type: '',
+      gender: '',
+      page: 1,
+    };
+    this.applyFilters();
   }
 
   goToCharacter(id: number) {
@@ -41,22 +66,7 @@ export class CharacterListComponent implements OnInit {
     switch (gender.toLowerCase()) {
       case 'male': return '../assets/male.svg';
       case 'female': return '../assets/female.svg';
-      default: return '../assets/who.svg';
+      default: return '../assets/alien.svg';
     }
-  }
-
-  sortByCreatedAt() {
-    this.filteredCharacters.sort((a, b) => new Date(b.created).getTime() - new Date(a.created).getTime());
-  }
-
-  filterByGender() {
-    this.filteredCharacters = this.filterGender ? this.characters.filter(character => character.gender === this.filterGender) : this.characters;
-  }
-
-  searchByName() {
-    this.characterService.getCharacters(1, this.searchQuery).subscribe(data => {
-      this.characters = data.results;
-      this.filteredCharacters = data.results;
-    });
   }
 }
