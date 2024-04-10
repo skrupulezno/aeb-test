@@ -1,0 +1,11 @@
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  div {
+    margin: 10px;
+  }
+  p {
+    text-align: center;
+  }
+}
