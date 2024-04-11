@@ -1,14 +1,32 @@
-<router-outlet>
-  <div class="container mt-5">
-    <div class="card" *ngIf="character">
-      <img [src]="character.image" class="card-img-top" alt="{{ character.name }}">
-      <div class="card-body">
-        <h5 class="card-title">{{ character.name }}</h5>
-        <p class="card-text">Gender: {{ character.gender }}</p>
-        <p class="card-text">Status: {{ character.status }}</p>
-        <p class="card-text">Species: {{ character.species }}</p>
-        <p class="card-text">Episodes: {{ character.episode.length }}</p>
+<div class="container mt-5 character-list">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card mb-3" *ngIf="character">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img [src]="character.image" class="img-fluid rounded-start" alt="Image {{character.name}}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h4 class="card-title">{{ character.name }}</h4>
+              <br>
+              <figcaption class="blockquote-footer mb-2">
+                {{ character.origin.name }}
+              </figcaption>
+              <p class="card-text">
+                <small class="text-muted">
+                  {{ character.status }} &#x2022; {{ character.species }} &#x2022;
+                  <img [src]="getGenderIcon(character.gender)" alt="{{ character.gender }}" width="20" height="20">
+                </small>
+              </p>
+              <p class="mb-2">Участвовал в {{ character.episode.length }} эпизодах</p>
+              <p class="mb-2">{{ getEpisodesString(character) }}</p>
+              <p class="mb-3">Дата появления в базе данных: {{ character.created.toString().split('T')[0] }}</p>
+              <button type="button" (click)="goToHome()" class="btn btn-primary btn-sm">Назад</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</router-outlet>
+</div>
