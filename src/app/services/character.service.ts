@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, skip } from 'rxjs';
 import { Character } from '../models/character.model';
 
 type Filters = {
@@ -20,7 +20,9 @@ export class CharacterService {
 
     Object.keys(filters).forEach(key => {
       const value = filters[key];
-      if (value !== undefined) {
+      if (value === '') {
+      }
+      else if (value !== undefined) {
         params = params.set(key, value.toString());
       }
     });

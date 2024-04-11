@@ -1,45 +1,66 @@
-
-  <div class="filters">
-    <input [(ngModel)]="filters.name" placeholder="Name">
-    <select [(ngModel)]="filters.gender">
-    <option value="">Gender</option>
-    <option value="Female">Жен.</option>
-    <option value="Male">Муж.</option>
-    <option value="Unknown">Пришелец</option>
-  </select>
-  <select [(ngModel)]="filters.status">
-    <option value="">Status</option>
-    <option value="Alive">Alive</option>
-    <option value="Dead">Dead</option>
-    <option value="Unknown">Unknown</option>
-  </select>
-  <button (click)="applyFilters2()">Применить фильтры</button>
-  <button (click)="clearFilters()">Очистить фильтры</button>
-</div>
-<div class="container text-center">
-  <div class="row">
-    <div class="col">
+<div class="content">
+  <div class="filters p-3">
+    <div class="row justify-content-center mb-3">
+      <div class="col-auto">
+        <select [(ngModel)]="filters.gender" class="form-select">
+          <option value="">Пол</option>
+          <option value="Female">Жен.</option>
+          <option value="Male">Муж.</option>
+          <option value="Unknown">Пришелец</option>
+        </select>
+      </div>
+      <div class="col-auto">
+        <select [(ngModel)]="filters.status" class="form-select">
+          <option value="">Статус</option>
+          <option value="Alive">Жив</option>
+          <option value="Dead">Мёртв</option>
+          <option value="Unknown">Неизвестно</option>
+        </select>
+      </div>
+      <div class="col-auto">
+        <div class="form-floating">
+          <input [(ngModel)]="filters.name" type="text" class="form-control" id="floatingInput" placeholder="Имя">
+          <label for="floatingInput">Имя</label>
+        </div>
+      </div>
     </div>
-    <div class="col-6">
-      <div class="container mt-5" class="character-list" infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="150" (scrolled)="onScroll()">
-        <div class="card mb-3" style=" width: 600px;" *ngFor="let character of characters; let i = index" (click)="goToCharacter(character.id)">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img [src]="character.image" class="img-fluid rounded-start" alt="Image {{character.name}}">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">{{ character.name }}</h5>
-                <p class="card-text"></p>
-                <p class="card-text"><small class="text-body-secondary">{{ character.status  }} &#x2022; {{ character.species  }} &#x2022; <img [src]="getGenderIcon(character.gender)" alt="{{ character.gender }}" width="20" height="20"></small></p>
+
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <div class="btn-group" role="group">
+          <button (click)="sortByEpisodeCount()" type="button" class="btn btn-primary">Сначало популярные</button>
+          <button (click)="sortByCreatedAt()" type="button" class="btn btn-primary">Сортировать по дате</button>
+        </div>
+      </div>
+      <div class="col-auto">
+        <div class="d-grid gap-2">
+          <button (click)="applyButton()" class="btn btn-primary" type="button">Применить</button>
+          <button (click)="clearFilters()" class="btn btn-secondary" type="button">Очистить фильтры</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 character-list" infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="150" (scrolled)="onScroll()">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div *ngFor="let character of characters" (click)="goToCharacter(character.id)">
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img [src]="character.image" class="img-fluid rounded-start" alt="Image {{character.name}}">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ character.name }}</h5>
+                  <p class="card-text"><small class="text-muted">{{ character.status }} &#x2022; {{ character.species }}</small></p>
+                  <img [src]="getGenderIcon(character.gender)" alt="{{ character.gender }}" width="20" height="20">
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col">
-    </div>
   </div>
 </div>
-

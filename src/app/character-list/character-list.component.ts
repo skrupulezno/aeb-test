@@ -40,7 +40,7 @@ export class CharacterListComponent implements OnInit {
     });
   }
 
-  applyFilters2() {
+  applyButton() {
     this.characters = [];
     this.applyFilters();
   }
@@ -56,6 +56,18 @@ export class CharacterListComponent implements OnInit {
       page: 1,
     };
     this.applyFilters();
+  }
+
+  sortByEpisodeCount() {
+    this.characters.sort((a, b) => {
+      return b.episode.length - a.episode.length;
+    });
+  }
+
+  sortByCreatedAt() {
+    this.characters.sort((a, b) => {
+      return new Date(b.created).getTime() - new Date(a.created).getTime();
+    });
   }
 
   goToCharacter(id: number) {
