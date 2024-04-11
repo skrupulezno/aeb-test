@@ -1,9 +1,4 @@
 # Тестовое задание задание для AЭБ
-## Ссылка на приложение
-
-https://skrupulezno.github.io/aeb-test/
-
-
 ## Описание
 Задача: необходимо написать простое приложение с использованием https://rickandmortyapi.com/documentation
 
@@ -39,7 +34,7 @@ https://skrupulezno.github.io/aeb-test/
 Нужен nodejs lts версии
 1. Скопируйте репозиторий 
 ```bash
-git clone git@github.com:skrupulezno/aeb-test.git
+git clone https://github.com/skrupulezno/aeb-test.git
 ```
 2. Подгрузите зависимости:
 ```bash
