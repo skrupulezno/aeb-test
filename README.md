@@ -1,8 +1,7 @@
 # Тестовое задание задание для AЭБ
 ## Ссылка на приложение
 
-[тестовое задание](https://skrupulezno.github.io/aeb-test/
-)
+https://skrupulezno.github.io/aeb-test/
 
 
 ## Описание
