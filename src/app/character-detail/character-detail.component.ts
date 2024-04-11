@@ -11,10 +11,8 @@ import { Character } from '../models/character.model';
 
 export class CharacterDetailComponent implements OnInit {
   character: Character | null = null;
-  // characterService: any;
 
   constructor(private route: ActivatedRoute, private characterService: CharacterService) {}
- // constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
