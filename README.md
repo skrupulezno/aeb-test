@@ -32,6 +32,7 @@
 
 ## Локальный запуск проекта
 Нужен nodejs lts версии
+
 Также нужен Angular 17
 ```bash
 npm install -g @angular/cli
