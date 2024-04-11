@@ -10,6 +10,7 @@ type Filters = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class CharacterService {
   private apiUrl = 'https://rickandmortyapi.com/api/character';
   private apiUrlEpisode = 'https://rickandmortyapi.com/api/episode/';
