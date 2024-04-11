@@ -77,9 +77,9 @@ export class CharacterListComponent implements OnInit {
 
   getGenderIcon(gender: string): string {
     switch (gender.toLowerCase()) {
-      case 'male': return '../assets/male.svg';
-      case 'female': return '../assets/female.svg';
-      default: return '../assets/alien.svg';
+      case 'male': return 'assets/male.svg';
+      case 'female': return 'assets/female.svg';
+      default: return 'assets/alien.svg';
     }
   }
 }
