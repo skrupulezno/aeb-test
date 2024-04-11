@@ -2,6 +2,10 @@
 ## Описание
 Задача: необходимо написать простое приложение с использованием https://rickandmortyapi.com/documentation
 
+## Ссылка на приложение github pages
+
+https://skrupulezno.github.io/aeb-test/
+
 
 ## Реализовано в рамках тестового задания
 
