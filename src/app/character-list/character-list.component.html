@@ -28,7 +28,7 @@
     <div class="row justify-content-center">
       <div class="col-auto">
         <div class="btn-group" role="group">
-          <button (click)="sortByEpisodeCount()" type="button" class="btn btn-primary">Сначало популярные</button>
+          <button (click)="sortByEpisodeCount()" type="button" class="btn btn-primary">Сначала популярные</button>
           <button (click)="sortByCreatedAt()" type="button" class="btn btn-primary">Сортировать по дате</button>
         </div>
       </div>
@@ -58,8 +58,8 @@
                     {{character.origin.name}}
                   </figcaption>
                   <p class="card-text"><small class="text-muted">{{ character.status }} &#x2022; {{ character.species }} &#x2022; <img [src]="getGenderIcon(character.gender)" alt="{{ character.gender }}" width="20" height="20"></small></p>
-                  <br>
-                  <p>{{getEpisodesString(character)}}</p>
+                  <p>Участвовал в {{character.episode.length}} эпизодах</p>
+                  <p>Дата появление в базе данных {{character.created.toString().split('T')[0]}}</p>
                 </div>
               </div>
             </div>

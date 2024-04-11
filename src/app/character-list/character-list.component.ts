@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class CharacterListComponent implements OnInit {
   characters: Character[] = [];
-  //clearCharacters: Character[] = [];
+
   filteredCharacters: Character[] = [];
   filters = {
     name: '',
@@ -43,6 +43,7 @@ export class CharacterListComponent implements OnInit {
   applyButton() {
     this.characters = [];
     this.applyFilters();
+    this.filters.page = 1;
   }
 
   clearFilters() {
@@ -56,15 +57,6 @@ export class CharacterListComponent implements OnInit {
       page: 1,
     };
     this.applyFilters();
-  }
-
-  getEpisodesString(character: Character): string {
-    const episodes : string[] = [];
-    character.episode.forEach(element => {
-      episodes.push(parseInt(element).toString());
-    });
-    console.log(episodes);
-    return episodes.join(', ');
   }
 
   sortByEpisodeCount() {
