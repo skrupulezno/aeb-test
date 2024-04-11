@@ -32,6 +32,11 @@
 
 ## Локальный запуск проекта
 Нужен nodejs lts версии
+Также нужен Angular 17
+```bash
+npm install -g @angular/cli
+```
+
 1. Скопируйте репозиторий 
 ```bash
 git clone https://github.com/skrupulezno/aeb-test.git
