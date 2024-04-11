@@ -53,8 +53,13 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">{{ character.name }}</h5>
-                  <p class="card-text"><small class="text-muted">{{ character.status }} &#x2022; {{ character.species }}</small></p>
-                  <img [src]="getGenderIcon(character.gender)" alt="{{ character.gender }}" width="20" height="20">
+                  <br>
+                  <figcaption class="blockquote-footer">
+                    {{character.origin.name}}
+                  </figcaption>
+                  <p class="card-text"><small class="text-muted">{{ character.status }} &#x2022; {{ character.species }} &#x2022; <img [src]="getGenderIcon(character.gender)" alt="{{ character.gender }}" width="20" height="20"></small></p>
+                  <br>
+                  <p>{{getEpisodesString(character)}}</p>
                 </div>
               </div>
             </div>

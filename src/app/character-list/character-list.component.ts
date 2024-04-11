@@ -58,6 +58,15 @@ export class CharacterListComponent implements OnInit {
     this.applyFilters();
   }
 
+  getEpisodesString(character: Character): string {
+    const episodes : string[] = [];
+    character.episode.forEach(element => {
+      episodes.push(parseInt(element).toString());
+    });
+    console.log(episodes);
+    return episodes.join(', ');
+  }
+
   sortByEpisodeCount() {
     this.characters.sort((a, b) => {
       return b.episode.length - a.episode.length;
